@@ -16,3 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/chat', [App\Http\Controllers\ChatController::class, 'chat'])->middleware('auth');
+
+Route::post('/send', [App\Http\Controllers\ChatController::class, 'send']);
+
+Route::get('/getOldMessage',[App\Http\Controllers\ChatController::class, 'getOldMessage']);
+Route::post('/saveChatData',[App\Http\Controllers\ChatController::class, 'saveChatData']);
+Auth::routes();
+
+Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
